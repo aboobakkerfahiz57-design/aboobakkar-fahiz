@@ -1,0 +1,796 @@
+/* =========================================================
+   ABOOBAKKAR FAHIZ — PREMIUM PERSONAL WEBSITE
+   SCRIPT.JS
+   ========================================================= */
+
+document.documentElement.classList.add("js-enabled");
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =======================================================
+     BASIC HELPERS
+     ======================================================= */
+
+  const $ = (selector, parent = document) =>
+    parent.querySelector(selector);
+
+  const $$ = (selector, parent = document) =>
+    Array.from(parent.querySelectorAll(selector));
+
+
+  /* =======================================================
+     NAVIGATION
+     ======================================================= */
+
+  const nav = $(".site-nav");
+  const menuToggle = $(".menu-toggle");
+  const navLinks = $(".nav-links");
+
+  function updateNavigation() {
+    if (!nav) return;
+
+    if (window.scrollY > 40) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  }
+
+  updateNavigation();
+
+  window.addEventListener("scroll", updateNavigation, {
+    passive: true
+  });
+
+
+  /* =======================================================
+     MOBILE MENU
+     ======================================================= */
+
+  if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.classList.toggle("active", isOpen);
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      document.body.classList.toggle(
+        "menu-open",
+        isOpen
+      );
+    });
+
+
+    /* Close menu when a navigation link is clicked */
+
+    $$(".nav-links a").forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        document.body.classList.remove("menu-open");
+      });
+
+    });
+
+
+    /* Close menu with Escape */
+
+    document.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Escape" &&
+        navLinks.classList.contains("open")
+      ) {
+
+        navLinks.classList.remove("open");
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        document.body.classList.remove("menu-open");
+      }
+
+    });
+
+  }
+
+
+  /* =======================================================
+     SMOOTH INTERNAL LINKS
+     ======================================================= */
+
+  $$('a[href^="#"]').forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+      const targetId = link.getAttribute("href");
+
+      if (!targetId || targetId === "#") {
+        return;
+      }
+
+      const target = $(targetId);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const navHeight = nav
+        ? nav.offsetHeight
+        : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        navHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+
+    });
+
+  });
+
+
+  /* =======================================================
+     SCROLL REVEAL
+     ======================================================= */
+
+  const revealElements = $$(".reveal");
+
+  if ("IntersectionObserver" in window) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          });
+
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -60px 0px"
+        }
+      );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+  } else {
+
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+
+  }
+
+
+  /* =======================================================
+     HERO PARALLAX
+     ======================================================= */
+
+  const hero = $(".hero");
+
+  if (hero && !window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches) {
+
+    let ticking = false;
+
+    function updateHeroParallax() {
+
+      if (!ticking) {
+
+        window.requestAnimationFrame(() => {
+
+          const scroll = window.scrollY;
+
+          if (scroll < window.innerHeight) {
+
+            const amount = Math.min(
+              scroll * 0.18,
+              120
+            );
+
+            hero.style.backgroundPosition =
+              `center calc(50% + ${amount}px)`;
+
+          }
+
+          ticking = false;
+
+        });
+
+        ticking = true;
+      }
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateHeroParallax,
+      { passive: true }
+    );
+
+  }
+
+
+  /* =======================================================
+     GALLERY
+     ======================================================= */
+
+  const galleryItems = $$(".gallery-item");
+
+  const lightbox = $(".lightbox");
+  const lightboxImage = $(".lightbox-image");
+  const lightboxClose = $(".lightbox-close");
+  const lightboxPrev = $(".lightbox-prev");
+  const lightboxNext = $(".lightbox-next");
+  const lightboxCounter = $(".lightbox-counter");
+
+  let currentGalleryIndex = 0;
+
+
+  function getGalleryImage(index) {
+
+    if (!galleryItems.length) {
+      return null;
+    }
+
+    const item =
+      galleryItems[index];
+
+    if (!item) {
+      return null;
+    }
+
+    const image =
+      $("img", item);
+
+    return image || null;
+  }
+
+
+  function updateLightbox() {
+
+    const image =
+      getGalleryImage(currentGalleryIndex);
+
+    if (!image || !lightboxImage) {
+      return;
+    }
+
+    lightboxImage.src =
+      image.src;
+
+    lightboxImage.alt =
+      image.alt || "Leadership Gallery image";
+
+    if (lightboxCounter) {
+
+      lightboxCounter.textContent =
+        `${currentGalleryIndex + 1} / ${galleryItems.length}`;
+
+    }
+
+  }
+
+
+  function openLightbox(index) {
+
+    if (!lightbox || !galleryItems.length) {
+      return;
+    }
+
+    currentGalleryIndex =
+      Math.max(
+        0,
+        Math.min(
+          index,
+          galleryItems.length - 1
+        )
+      );
+
+    updateLightbox();
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow =
+      "hidden";
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+
+  function closeLightbox() {
+
+    if (!lightbox) {
+      return;
+    }
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+
+  function showPrevious() {
+
+    if (!galleryItems.length) {
+      return;
+    }
+
+    currentGalleryIndex--;
+
+    if (currentGalleryIndex < 0) {
+      currentGalleryIndex =
+        galleryItems.length - 1;
+    }
+
+    updateLightbox();
+
+  }
+
+
+  function showNext() {
+
+    if (!galleryItems.length) {
+      return;
+    }
+
+    currentGalleryIndex++;
+
+    if (
+      currentGalleryIndex >=
+      galleryItems.length
+    ) {
+      currentGalleryIndex = 0;
+    }
+
+    updateLightbox();
+
+  }
+
+
+  galleryItems.forEach(
+    (item, index) => {
+
+      item.setAttribute(
+        "role",
+        "button"
+      );
+
+      item.setAttribute(
+        "tabindex",
+        "0"
+      );
+
+      item.setAttribute(
+        "aria-label",
+        `Open leadership image ${index + 1}`
+      );
+
+
+      item.addEventListener(
+        "click",
+        () => {
+          openLightbox(index);
+        }
+      );
+
+
+      item.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+            event.preventDefault();
+
+            openLightbox(index);
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  if (lightboxClose) {
+
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+  }
+
+
+  if (lightboxPrev) {
+
+    lightboxPrev.addEventListener(
+      "click",
+      showPrevious
+    );
+
+  }
+
+
+  if (lightboxNext) {
+
+    lightboxNext.addEventListener(
+      "click",
+      showNext
+    );
+
+  }
+
+
+  /* Close when clicking the dark background */
+
+  if (lightbox) {
+
+    lightbox.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     KEYBOARD GALLERY CONTROL
+     ======================================================= */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        !lightbox ||
+        !lightbox.classList.contains("active")
+      ) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrevious();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNext();
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     MOBILE SWIPE GALLERY
+     ======================================================= */
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+
+    lightbox.addEventListener(
+      "touchstart",
+      (event) => {
+
+        if (!event.touches.length) {
+          return;
+        }
+
+        touchStartX =
+          event.touches[0].clientX;
+
+      },
+      { passive: true }
+    );
+
+
+    lightbox.addEventListener(
+      "touchend",
+      (event) => {
+
+        if (!event.changedTouches.length) {
+          return;
+        }
+
+        touchEndX =
+          event.changedTouches[0].clientX;
+
+        const difference =
+          touchStartX - touchEndX;
+
+        const minimumSwipe =
+          50;
+
+        if (
+          Math.abs(difference) <
+          minimumSwipe
+        ) {
+          return;
+        }
+
+        if (difference > 0) {
+          showNext();
+        } else {
+          showPrevious();
+        }
+
+      },
+      { passive: true }
+    );
+
+  }
+
+
+  /* =======================================================
+     IMAGE LOAD EFFECT
+     ======================================================= */
+
+  const images = $$("img");
+
+  images.forEach((image) => {
+
+    if (image.complete) {
+      image.classList.add("loaded");
+    }
+
+    image.addEventListener(
+      "load",
+      () => {
+        image.classList.add("loaded");
+      }
+    );
+
+  });
+
+
+  /* =======================================================
+     ACTIVE NAVIGATION SECTION
+     ======================================================= */
+
+  const sections =
+    $$("main section[id]");
+
+  const navAnchors =
+    $$(".nav-links a[href^='#']");
+
+  if (
+    sections.length &&
+    navAnchors.length &&
+    "IntersectionObserver" in window
+  ) {
+
+    const sectionObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            const id =
+              entry.target.id;
+
+            navAnchors.forEach((anchor) => {
+
+              anchor.classList.remove(
+                "active"
+              );
+
+              if (
+                anchor.getAttribute("href") ===
+                `#${id}`
+              ) {
+
+                anchor.classList.add(
+                  "active"
+                );
+
+              }
+
+            });
+
+          });
+
+        },
+        {
+          threshold: 0.2,
+          rootMargin: "-20% 0px -65% 0px"
+        }
+      );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+
+  }
+
+
+  /* =======================================================
+     BUTTON MICRO INTERACTION
+     ======================================================= */
+
+  $$(".button, .velora-link").forEach(
+    (button) => {
+
+      button.addEventListener(
+        "mouseenter",
+        () => {
+          button.style.transform =
+            "translateY(-3px)";
+        }
+      );
+
+      button.addEventListener(
+        "mouseleave",
+        () => {
+          button.style.transform = "";
+        }
+      );
+
+    }
+  );
+
+
+  /* =======================================================
+     COMPANY IMAGE TILT
+     ======================================================= */
+
+  const companyImages =
+    $$(".company-image-wrap");
+
+  const reducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+  if (!reducedMotion && window.innerWidth > 900) {
+
+    companyImages.forEach((wrapper) => {
+
+      wrapper.addEventListener(
+        "mousemove",
+        (event) => {
+
+          const rect =
+            wrapper.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left;
+
+          const y =
+            event.clientY - rect.top;
+
+          const rotateX =
+            ((y / rect.height) - 0.5) * -3;
+
+          const rotateY =
+            ((x / rect.width) - 0.5) * 3;
+
+          wrapper.style.transform =
+            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+        }
+      );
+
+
+      wrapper.addEventListener(
+        "mouseleave",
+        () => {
+
+          wrapper.style.transform =
+            "perspective(900px) rotateX(0deg) rotateY(0deg)";
+
+        }
+      );
+
+    });
+
+  }
+
+
+  /* =======================================================
+     EXTERNAL LINKS
+     ======================================================= */
+
+  $$("a[target='_blank']").forEach(
+    (link) => {
+
+      link.setAttribute(
+        "rel",
+        "noopener noreferrer"
+      );
+
+    }
+  );
+
+
+  /* =======================================================
+     CURRENT YEAR
+     ======================================================= */
+
+  const yearElements =
+    $$("[data-current-year]");
+
+  yearElements.forEach((element) => {
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+
+  /* =======================================================
+     PAGE READY
+     ======================================================= */
+
+  document.body.classList.add(
+    "page-ready"
+  );
+
+});
