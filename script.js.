@@ -1,342 +1,549 @@
 /* =========================================================
-   ABOOBAKKAR FAHIZ — PREMIUM PERSONAL WEBSITE
-   SCRIPT.JS
-   ========================================================= */
+   ABOOBAKKAR FAHIZ
+   PERSONAL WEBSITE — INTERACTIONS
+========================================================= */
 
-document.documentElement.classList.add("js-enabled");
+"use strict";
+
+
+/* =========================================================
+   DOM READY
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =======================================================
-     BASIC HELPERS
-     ======================================================= */
-
-  const $ = (selector, parent = document) =>
-    parent.querySelector(selector);
-
-  const $$ = (selector, parent = document) =>
-    Array.from(parent.querySelectorAll(selector));
+  document.documentElement.classList.add("js-enabled");
 
 
   /* =======================================================
-     NAVIGATION
-     ======================================================= */
+     ELEMENTS
+  ======================================================== */
 
-  const nav = $(".site-nav");
-  const menuToggle = $(".menu-toggle");
-  const navLinks = $(".nav-links");
+  const header = document.getElementById("site-header");
 
-  function updateNavigation() {
-    if (!nav) return;
+  const menuToggle = document.getElementById("menu-toggle");
 
-    if (window.scrollY > 40) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+  const navLinks = document.querySelectorAll(
+    ".nav-link"
+  );
+
+  const sections = document.querySelectorAll(
+    "main section[id]"
+  );
+
+  const galleryItems = document.querySelectorAll(
+    ".gallery-item"
+  );
+
+  const lightbox = document.getElementById(
+    "lightbox"
+  );
+
+  const lightboxImage = document.getElementById(
+    "lightbox-image"
+  );
+
+  const lightboxClose = document.getElementById(
+    "lightbox-close"
+  );
+
+  const lightboxPrev = document.getElementById(
+    "lightbox-prev"
+  );
+
+  const lightboxNext = document.getElementById(
+    "lightbox-next"
+  );
+
+  const lightboxCounter = document.getElementById(
+    "lightbox-counter"
+  );
+
+  const currentYear = document.getElementById(
+    "current-year"
+  );
+
+
+  /* =======================================================
+     CURRENT YEAR
+  ======================================================== */
+
+  if (currentYear) {
+    currentYear.textContent =
+      new Date().getFullYear();
   }
 
-  updateNavigation();
 
-  window.addEventListener("scroll", updateNavigation, {
-    passive: true
-  });
+  /* =======================================================
+     HEADER SCROLL STATE
+  ======================================================== */
+
+  function updateHeader() {
+
+    if (!header) {
+      return;
+    }
+
+    if (window.scrollY > 30) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+  }
+
+  updateHeader();
+
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
 
   /* =======================================================
      MOBILE MENU
-     ======================================================= */
+  ======================================================== */
 
-  if (menuToggle && navLinks) {
+  function openMobileMenu() {
 
-    menuToggle.addEventListener("click", () => {
-
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuToggle.classList.toggle("active", isOpen);
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      document.body.classList.toggle(
-        "menu-open",
-        isOpen
-      );
-    });
-
-
-    /* Close menu when a navigation link is clicked */
-
-    $$(".nav-links a").forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
-        menuToggle.classList.remove("active");
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        document.body.classList.remove("menu-open");
-      });
-
-    });
-
-
-    /* Close menu with Escape */
-
-    document.addEventListener("keydown", (event) => {
-
-      if (
-        event.key === "Escape" &&
-        navLinks.classList.contains("open")
-      ) {
-
-        navLinks.classList.remove("open");
-        menuToggle.classList.remove("active");
-
-        menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        document.body.classList.remove("menu-open");
-      }
-
-    });
-
-  }
-
-
-  /* =======================================================
-     SMOOTH INTERNAL LINKS
-     ======================================================= */
-
-  $$('a[href^="#"]').forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") {
-        return;
-      }
-
-      const target = $(targetId);
-
-      if (!target) {
-        return;
-      }
-
-      event.preventDefault();
-
-      const navHeight = nav
-        ? nav.offsetHeight
-        : 0;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        navHeight;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-
-    });
-
-  });
-
-
-  /* =======================================================
-     SCROLL REVEAL
-     ======================================================= */
-
-  const revealElements = $$(".reveal");
-
-  if ("IntersectionObserver" in window) {
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach((entry) => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          });
-
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -60px 0px"
-        }
-      );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-
-  } else {
-
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
-
-  }
-
-
-  /* =======================================================
-     HERO PARALLAX
-     ======================================================= */
-
-  const hero = $(".hero");
-
-  if (hero && !window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches) {
-
-    let ticking = false;
-
-    function updateHeroParallax() {
-
-      if (!ticking) {
-
-        window.requestAnimationFrame(() => {
-
-          const scroll = window.scrollY;
-
-          if (scroll < window.innerHeight) {
-
-            const amount = Math.min(
-              scroll * 0.18,
-              120
-            );
-
-            hero.style.backgroundPosition =
-              `center calc(50% + ${amount}px)`;
-
-          }
-
-          ticking = false;
-
-        });
-
-        ticking = true;
-      }
-
+    if (!menuToggle || !mobileMenu) {
+      return;
     }
 
-    window.addEventListener(
-      "scroll",
-      updateHeroParallax,
-      { passive: true }
+    menuToggle.classList.add("open");
+
+    mobileMenu.classList.add("open");
+
+    mobileMenu.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      "Close navigation"
+    );
+
+    document.body.classList.add(
+      "menu-open"
+    );
+
+  }
+
+
+  function closeMobileMenu() {
+
+    if (!menuToggle || !mobileMenu) {
+      return;
+    }
+
+    menuToggle.classList.remove("open");
+
+    mobileMenu.classList.remove("open");
+
+    mobileMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      "Open navigation"
+    );
+
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+  }
+
+
+  if (menuToggle) {
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          mobileMenu.classList.contains(
+            "open"
+          );
+
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+
+      }
     );
 
   }
 
 
   /* =======================================================
-     GALLERY
-     ======================================================= */
+     MOBILE NAVIGATION
+  ======================================================== */
 
-  const galleryItems = $$(".gallery-item");
+  mobileLinks.forEach((link) => {
 
-  const lightbox = $(".lightbox");
-  const lightboxImage = $(".lightbox-image");
-  const lightboxClose = $(".lightbox-close");
-  const lightboxPrev = $(".lightbox-prev");
-  const lightboxNext = $(".lightbox-next");
-  const lightboxCounter = $(".lightbox-counter");
+    link.addEventListener(
+      "click",
+      () => {
+
+        closeMobileMenu();
+
+      }
+    );
+
+  });
+
+
+  /* =======================================================
+     SMOOTH INTERNAL LINKS
+  ======================================================== */
+
+  const internalLinks =
+    document.querySelectorAll(
+      'a[href^="#"]'
+    );
+
+
+  internalLinks.forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      (event) => {
+
+        const targetID =
+          link.getAttribute("href");
+
+        if (
+          !targetID ||
+          targetID === "#"
+        ) {
+          return;
+        }
+
+        const target =
+          document.querySelector(
+            targetID
+          );
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const headerHeight =
+          header
+            ? header.offsetHeight
+            : 0;
+
+        const targetPosition =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth"
+        });
+
+        closeMobileMenu();
+
+      }
+    );
+
+  });
+
+
+  /* =======================================================
+     ACTIVE NAVIGATION
+  ======================================================== */
+
+  if (
+    "IntersectionObserver" in window
+  ) {
+
+    const sectionObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              const id =
+                entry.target.getAttribute(
+                  "id"
+                );
+
+              navLinks.forEach(
+                (link) => {
+
+                  const linkTarget =
+                    link.getAttribute(
+                      "href"
+                    );
+
+                  link.classList.toggle(
+                    "active",
+                    linkTarget ===
+                      `#${id}`
+                  );
+
+                }
+              );
+
+            }
+          );
+
+        },
+        {
+          rootMargin:
+            "-35% 0px -55% 0px",
+          threshold: 0
+        }
+      );
+
+
+    sections.forEach(
+      (section) => {
+
+        sectionObserver.observe(
+          section
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     SCROLL REVEAL
+  ======================================================== */
+
+  const revealElements =
+    document.querySelectorAll(
+      ".section-heading, " +
+      ".about-layout, " +
+      ".timeline-item, " +
+      ".feature-intro, " +
+      ".leadership-meta, " +
+      ".gallery-header, " +
+      ".gallery-item, " +
+      ".company-hero, " +
+      ".business-item, " +
+      ".service-item, " +
+      ".work-item, " +
+      ".vision-content, " +
+      ".next-content, " +
+      ".contact-layout"
+    );
+
+
+  revealElements.forEach(
+    (element) => {
+
+      element.classList.add(
+        "reveal"
+      );
+
+    }
+  );
+
+
+  if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+  ) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px"
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+  } else {
+
+    revealElements.forEach(
+      (element) => {
+
+        element.classList.add(
+          "visible"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     GALLERY DATA
+  ======================================================== */
+
+  const galleryImages =
+    Array.from(
+      galleryItems
+    ).map(
+      (item) =>
+        item.getAttribute(
+          "data-image"
+        )
+    );
+
 
   let currentGalleryIndex = 0;
 
 
-  function getGalleryImage(index) {
-
-    if (!galleryItems.length) {
-      return null;
-    }
-
-    const item =
-      galleryItems[index];
-
-    if (!item) {
-      return null;
-    }
-
-    const image =
-      $("img", item);
-
-    return image || null;
-  }
-
+  /* =======================================================
+     UPDATE LIGHTBOX
+  ======================================================== */
 
   function updateLightbox() {
 
-    const image =
-      getGalleryImage(currentGalleryIndex);
-
-    if (!image || !lightboxImage) {
+    if (
+      !lightboxImage ||
+      !lightboxCounter ||
+      !galleryImages.length
+    ) {
       return;
     }
 
-    lightboxImage.src =
-      image.src;
+    const image =
+      galleryImages[
+        currentGalleryIndex
+      ];
+
+    lightboxImage.src = image;
 
     lightboxImage.alt =
-      image.alt || "Leadership Gallery image";
+      `Leadership photograph ${
+        currentGalleryIndex + 1
+      }`;
 
-    if (lightboxCounter) {
-
-      lightboxCounter.textContent =
-        `${currentGalleryIndex + 1} / ${galleryItems.length}`;
-
-    }
+    lightboxCounter.textContent =
+      `${String(
+        currentGalleryIndex + 1
+      ).padStart(2, "0")} / ${String(
+        galleryImages.length
+      ).padStart(2, "0")}`;
 
   }
 
 
+  /* =======================================================
+     OPEN LIGHTBOX
+  ======================================================== */
+
   function openLightbox(index) {
 
-    if (!lightbox || !galleryItems.length) {
+    if (
+      !lightbox ||
+      !galleryImages.length
+    ) {
       return;
     }
 
     currentGalleryIndex =
-      Math.max(
-        0,
-        Math.min(
-          index,
-          galleryItems.length - 1
-        )
-      );
+      Number(index);
+
+    if (
+      currentGalleryIndex < 0
+    ) {
+      currentGalleryIndex = 0;
+    }
+
+    if (
+      currentGalleryIndex >=
+      galleryImages.length
+    ) {
+      currentGalleryIndex =
+        galleryImages.length - 1;
+    }
 
     updateLightbox();
 
-    lightbox.classList.add("active");
-
-    document.body.style.overflow =
-      "hidden";
+    lightbox.classList.add(
+      "open"
+    );
 
     lightbox.setAttribute(
       "aria-hidden",
       "false"
     );
 
+    document.body.classList.add(
+      "menu-open"
+    );
+
   }
 
+
+  /* =======================================================
+     CLOSE LIGHTBOX
+  ======================================================== */
 
   function closeLightbox() {
 
@@ -344,97 +551,103 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    lightbox.classList.remove("active");
-
-    document.body.style.overflow = "";
+    lightbox.classList.remove(
+      "open"
+    );
 
     lightbox.setAttribute(
       "aria-hidden",
       "true"
     );
 
+    document.body.classList.remove(
+      "menu-open"
+    );
+
+    setTimeout(
+      () => {
+
+        if (
+          !lightbox.classList.contains(
+            "open"
+          ) &&
+          lightboxImage
+        ) {
+
+          lightboxImage.removeAttribute(
+            "src"
+          );
+
+        }
+
+      },
+      300
+    );
+
   }
 
 
-  function showPrevious() {
+  /* =======================================================
+     NEXT IMAGE
+  ======================================================== */
 
-    if (!galleryItems.length) {
+  function nextImage() {
+
+    if (!galleryImages.length) {
       return;
     }
 
-    currentGalleryIndex--;
-
-    if (currentGalleryIndex < 0) {
-      currentGalleryIndex =
-        galleryItems.length - 1;
-    }
+    currentGalleryIndex =
+      (
+        currentGalleryIndex + 1
+      ) %
+      galleryImages.length;
 
     updateLightbox();
 
   }
 
 
-  function showNext() {
+  /* =======================================================
+     PREVIOUS IMAGE
+  ======================================================== */
 
-    if (!galleryItems.length) {
+  function previousImage() {
+
+    if (!galleryImages.length) {
       return;
     }
 
-    currentGalleryIndex++;
-
-    if (
-      currentGalleryIndex >=
-      galleryItems.length
-    ) {
-      currentGalleryIndex = 0;
-    }
+    currentGalleryIndex =
+      (
+        currentGalleryIndex -
+        1 +
+        galleryImages.length
+      ) %
+      galleryImages.length;
 
     updateLightbox();
 
   }
 
+
+  /* =======================================================
+     GALLERY CLICK
+  ======================================================== */
 
   galleryItems.forEach(
-    (item, index) => {
-
-      item.setAttribute(
-        "role",
-        "button"
-      );
-
-      item.setAttribute(
-        "tabindex",
-        "0"
-      );
-
-      item.setAttribute(
-        "aria-label",
-        `Open leadership image ${index + 1}`
-      );
-
+    (item) => {
 
       item.addEventListener(
         "click",
         () => {
+
+          const index =
+            item.getAttribute(
+              "data-index"
+            );
+
           openLightbox(index);
-        }
-      );
-
-
-      item.addEventListener(
-        "keydown",
-        (event) => {
-
-          if (
-            event.key === "Enter" ||
-            event.key === " "
-          ) {
-
-            event.preventDefault();
-
-            openLightbox(index);
-
-          }
 
         }
       );
@@ -442,6 +655,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
+
+  /* =======================================================
+     LIGHTBOX CONTROLS
+  ======================================================== */
 
   if (lightboxClose) {
 
@@ -453,27 +670,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  if (lightboxPrev) {
-
-    lightboxPrev.addEventListener(
-      "click",
-      showPrevious
-    );
-
-  }
-
-
   if (lightboxNext) {
 
     lightboxNext.addEventListener(
       "click",
-      showNext
+      nextImage
     );
 
   }
 
 
-  /* Close when clicking the dark background */
+  if (lightboxPrev) {
+
+    lightboxPrev.addEventListener(
+      "click",
+      previousImage
+    );
+
+  }
+
+
+  /* =======================================================
+     CLICK BACKDROP TO CLOSE
+  ======================================================== */
 
   if (lightbox) {
 
@@ -481,8 +700,13 @@ document.addEventListener("DOMContentLoaded", () => {
       "click",
       (event) => {
 
-        if (event.target === lightbox) {
+        if (
+          event.target ===
+          lightbox
+        ) {
+
           closeLightbox();
+
         }
 
       }
@@ -492,30 +716,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     KEYBOARD GALLERY CONTROL
-     ======================================================= */
+     KEYBOARD CONTROLS
+  ======================================================== */
 
   document.addEventListener(
     "keydown",
     (event) => {
 
-      if (
-        !lightbox ||
-        !lightbox.classList.contains("active")
-      ) {
+      const lightboxOpen =
+        lightbox &&
+        lightbox.classList.contains(
+          "open"
+        );
+
+
+      if (lightboxOpen) {
+
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          closeLightbox();
+
+        }
+
+        if (
+          event.key ===
+          "ArrowRight"
+        ) {
+
+          nextImage();
+
+        }
+
+        if (
+          event.key ===
+          "ArrowLeft"
+        ) {
+
+          previousImage();
+
+        }
+
         return;
+
       }
 
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
 
-      if (event.key === "ArrowLeft") {
-        showPrevious();
-      }
+      if (
+        event.key ===
+        "Escape"
+      ) {
 
-      if (event.key === "ArrowRight") {
-        showNext();
+        closeMobileMenu();
+
       }
 
     }
@@ -523,11 +778,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     MOBILE SWIPE GALLERY
-     ======================================================= */
+     TOUCH / SWIPE SUPPORT
+  ======================================================== */
 
   let touchStartX = 0;
+
   let touchEndX = 0;
+
 
   if (lightbox) {
 
@@ -535,7 +792,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "touchstart",
       (event) => {
 
-        if (!event.touches.length) {
+        if (
+          !event.touches ||
+          !event.touches.length
+        ) {
           return;
         }
 
@@ -551,7 +811,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "touchend",
       (event) => {
 
-        if (!event.changedTouches.length) {
+        if (
+          !event.changedTouches ||
+          !event.changedTouches.length
+        ) {
           return;
         }
 
@@ -559,10 +822,12 @@ document.addEventListener("DOMContentLoaded", () => {
           event.changedTouches[0].clientX;
 
         const difference =
-          touchStartX - touchEndX;
+          touchEndX -
+          touchStartX;
 
         const minimumSwipe =
-          50;
+          45;
+
 
         if (
           Math.abs(difference) <
@@ -571,10 +836,17 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        if (difference > 0) {
-          showNext();
+
+        if (
+          difference < 0
+        ) {
+
+          nextImage();
+
         } else {
-          showPrevious();
+
+          previousImage();
+
         }
 
       },
@@ -585,212 +857,237 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     IMAGE LOAD EFFECT
-     ======================================================= */
+     IMAGE LOAD STATE
+  ======================================================== */
 
-  const images = $$("img");
-
-  images.forEach((image) => {
-
-    if (image.complete) {
-      image.classList.add("loaded");
-    }
-
-    image.addEventListener(
-      "load",
-      () => {
-        image.classList.add("loaded");
-      }
+  const allImages =
+    document.querySelectorAll(
+      "img"
     );
 
-  });
+
+  allImages.forEach(
+    (image) => {
+
+      if (image.complete) {
+
+        image.classList.add(
+          "loaded"
+        );
+
+      } else {
+
+        image.addEventListener(
+          "load",
+          () => {
+
+            image.classList.add(
+              "loaded"
+            );
+
+          },
+          { once: true }
+        );
+
+      }
+
+    }
+  );
 
 
   /* =======================================================
-     ACTIVE NAVIGATION SECTION
-     ======================================================= */
+     HERO PARALLAX
+     SUBTLE ONLY
+  ======================================================== */
 
-  const sections =
-    $$("main section[id]");
+  const hero =
+    document.querySelector(
+      ".hero"
+    );
 
-  const navAnchors =
-    $$(".nav-links a[href^='#']");
+  const heroBackground =
+    document.querySelector(
+      ".hero-background"
+    );
+
 
   if (
-    sections.length &&
-    navAnchors.length &&
-    "IntersectionObserver" in window
+    hero &&
+    heroBackground &&
+    !window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches &&
+    window.innerWidth > 760
   ) {
 
-    const sectionObserver =
-      new IntersectionObserver(
-        (entries) => {
+    let ticking = false;
 
-          entries.forEach((entry) => {
 
-            if (!entry.isIntersecting) {
-              return;
-            }
+    function updateHeroParallax() {
 
-            const id =
-              entry.target.id;
+      if (ticking) {
+        return;
+      }
 
-            navAnchors.forEach((anchor) => {
+      ticking = true;
 
-              anchor.classList.remove(
-                "active"
-              );
 
-              if (
-                anchor.getAttribute("href") ===
-                `#${id}`
-              ) {
+      window.requestAnimationFrame(
+        () => {
 
-                anchor.classList.add(
-                  "active"
-                );
+          const scroll =
+            window.scrollY;
 
-              }
+          const heroHeight =
+            hero.offsetHeight;
 
-            });
 
-          });
+          if (
+            scroll <= heroHeight
+          ) {
 
-        },
-        {
-          threshold: 0.2,
-          rootMargin: "-20% 0px -65% 0px"
+            const movement =
+              scroll * 0.035;
+
+            heroBackground.style.transform =
+              `scale(1.02) translateY(${movement}px)`;
+
+          }
+
+
+          ticking = false;
+
         }
       );
 
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
-    });
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateHeroParallax,
+      { passive: true }
+    );
 
   }
 
 
   /* =======================================================
      BUTTON MICRO INTERACTION
-     ======================================================= */
+  ======================================================== */
 
-  $$(".button, .velora-link").forEach(
+  const buttons =
+    document.querySelectorAll(
+      ".button"
+    );
+
+
+  buttons.forEach(
     (button) => {
 
       button.addEventListener(
-        "mouseenter",
+        "pointerdown",
         () => {
+
           button.style.transform =
-            "translateY(-3px)";
+            "translateY(0) scale(0.98)";
+
         }
       );
 
+
       button.addEventListener(
-        "mouseleave",
+        "pointerup",
         () => {
-          button.style.transform = "";
+
+          button.style.transform =
+            "";
+
+        }
+      );
+
+
+      button.addEventListener(
+        "pointerleave",
+        () => {
+
+          button.style.transform =
+            "";
+
         }
       );
 
     }
   );
-
-
-  /* =======================================================
-     COMPANY IMAGE TILT
-     ======================================================= */
-
-  const companyImages =
-    $$(".company-image-wrap");
-
-  const reducedMotion =
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-  if (!reducedMotion && window.innerWidth > 900) {
-
-    companyImages.forEach((wrapper) => {
-
-      wrapper.addEventListener(
-        "mousemove",
-        (event) => {
-
-          const rect =
-            wrapper.getBoundingClientRect();
-
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const rotateX =
-            ((y / rect.height) - 0.5) * -3;
-
-          const rotateY =
-            ((x / rect.width) - 0.5) * 3;
-
-          wrapper.style.transform =
-            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-        }
-      );
-
-
-      wrapper.addEventListener(
-        "mouseleave",
-        () => {
-
-          wrapper.style.transform =
-            "perspective(900px) rotateX(0deg) rotateY(0deg)";
-
-        }
-      );
-
-    });
-
-  }
 
 
   /* =======================================================
      EXTERNAL LINKS
-     ======================================================= */
+  ======================================================== */
 
-  $$("a[target='_blank']").forEach(
+  const externalLinks =
+    document.querySelectorAll(
+      'a[target="_blank"]'
+    );
+
+
+  externalLinks.forEach(
     (link) => {
 
-      link.setAttribute(
-        "rel",
-        "noopener noreferrer"
-      );
+      const currentRel =
+        link.getAttribute(
+          "rel"
+        ) || "";
+
+
+      if (
+        !currentRel.includes(
+          "noopener"
+        )
+      ) {
+
+        link.setAttribute(
+          "rel",
+          `${currentRel} noopener noreferrer`.trim()
+        );
+
+      }
 
     }
   );
 
 
   /* =======================================================
-     CURRENT YEAR
-     ======================================================= */
+     PREVENT BROKEN EMPTY LINKS
+  ======================================================== */
 
-  const yearElements =
-    $$("[data-current-year]");
+  document
+    .querySelectorAll(
+      'a[href="#"]'
+    )
+    .forEach(
+      (link) => {
 
-  yearElements.forEach((element) => {
+        link.addEventListener(
+          "click",
+          (event) => {
 
-    element.textContent =
-      new Date().getFullYear();
+            event.preventDefault();
 
-  });
+          }
+        );
+
+      }
+    );
 
 
   /* =======================================================
      PAGE READY
-     ======================================================= */
+  ======================================================== */
 
   document.body.classList.add(
     "page-ready"
   );
+
 
 });
