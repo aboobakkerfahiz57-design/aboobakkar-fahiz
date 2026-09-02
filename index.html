@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -14,231 +13,231 @@
     content="Aboobakkar Fahiz — Founder, Entrepreneur, Business Builder and Digital Innovator."
   >
 
-  <meta
-    name="theme-color"
-    content="#080808"
-  >
+  <meta name="theme-color" content="#111111">
 
-  <meta
-    name="author"
-    content="Aboobakkar Fahiz"
-  >
-
-  <title>ABOOBAKKAR FAHIZ — Founder • Entrepreneur • Digital Innovator</title>
-
-  <!-- =====================================================
-       CSS
-       ===================================================== -->
+  <title>Aboobakkar Fahiz — Founder · Entrepreneur · Digital Innovator</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-  <!-- =====================================================
-       NAVIGATION
-       ===================================================== -->
+  <!-- =========================================================
+       SITE HEADER
+  ========================================================== -->
 
-  <header class="site-nav">
+  <header class="site-header" id="site-header">
 
-    <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="Aboobakkar Fahiz Home">
+      <span class="brand-name">ABOOBAKKAR FAHIZ</span>
+    </a>
 
-      <a
-        href="#home"
-        class="nav-logo"
-        aria-label="Aboobakkar Fahiz Home"
-      >
+    <nav class="desktop-nav" aria-label="Main navigation">
 
-        <span class="nav-logo-mark">AF</span>
+      <a href="#home" class="nav-link active">Home</a>
 
-        <span>ABOOBAKKAR FAHIZ</span>
+      <a href="#about" class="nav-link">About</a>
 
-      </a>
+      <a href="#leadership" class="nav-link">Leadership</a>
 
+      <a href="#tbd" class="nav-link">TBD Group</a>
 
-      <nav
-        class="nav-links"
-        aria-label="Main navigation"
-      >
+      <a href="#velora" class="nav-link">Velora Digital</a>
 
-        <a href="#about">About</a>
+      <a href="#work" class="nav-link">Work</a>
 
-        <a href="#leadership">Leadership</a>
+      <a href="#contact" class="nav-link">Contact</a>
 
-        <a href="#journey">Journey</a>
+    </nav>
 
-        <a href="#business">Business</a>
-
-        <a href="#work">Work</a>
-
-        <a href="#gallery">Gallery</a>
-
-        <a href="#vision">Vision</a>
-
-        <a
-          href="#contact"
-          class="nav-contact"
-        >
-          Contact
-        </a>
-
-      </nav>
-
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-      >
-
-        <span></span>
-        <span></span>
-
-      </button>
-
-    </div>
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
 
   </header>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
+       MOBILE NAVIGATION
+  ========================================================== -->
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+
+    <div class="mobile-menu-inner">
+
+      <a href="#home" class="mobile-nav-link">Home</a>
+
+      <a href="#about" class="mobile-nav-link">About</a>
+
+      <a href="#leadership" class="mobile-nav-link">Leadership</a>
+
+      <a href="#tbd" class="mobile-nav-link">TBD Group</a>
+
+      <a href="#velora" class="mobile-nav-link">Velora Digital</a>
+
+      <a href="#work" class="mobile-nav-link">Selected Work</a>
+
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
        MAIN
-       ===================================================== -->
+  ========================================================== -->
 
-  <main>
+  <main id="main-content">
 
 
-    <!-- ===================================================
-         01 — HERO
-         =================================================== -->
+    <!-- =======================================================
+         HOME
+    ======================================================== -->
 
     <section
-      id="home"
       class="hero"
-      aria-label="Introduction"
+      id="home"
+      aria-labelledby="hero-title"
     >
+
+      <div class="hero-background" aria-hidden="true"></div>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
 
-        <div class="hero-eyebrow reveal">
-          Founder • Entrepreneur • Digital Innovator
-        </div>
+        <p class="eyebrow">
+          FOUNDER · ENTREPRENEUR · DIGITAL INNOVATOR
+        </p>
 
-
-        <h1 class="hero-title">
-
-          <span class="reveal">
-            ABOOBAKKAR
-          </span>
-
-          <span class="outline reveal reveal-delay-1">
-            FAHIZ
-          </span>
-
+        <h1 id="hero-title">
+          Aboobakkar Fahiz
         </h1>
 
+        <p class="hero-description">
+          Building businesses, digital experiences and ideas
+          with purpose.
+        </p>
 
-        <div class="hero-meta reveal reveal-delay-2">
+        <div class="hero-actions">
 
-          <div class="hero-role">
+          <a href="#about" class="button button-light">
+            Explore
+          </a>
 
-            <strong>Building visions.</strong><br>
-
-            Creating impact. Shaping the future.
-
-          </div>
-
-
-          <div class="hero-location">
-
-            Dakshina Kannada<br>
-            Mangaluru • Karnataka • India
-
-          </div>
+          <a href="#contact" class="button button-outline">
+            Get in touch
+          </a>
 
         </div>
 
       </div>
 
+      <div class="hero-bottom">
 
-      <div class="hero-scroll">
-        Scroll to explore
+        <span>DAKSHINA KANNADA · MANGALURU · INDIA</span>
+
+        <a href="#about" class="scroll-indicator">
+          <span>Scroll</span>
+          <span class="scroll-line"></span>
+        </a>
+
       </div>
 
     </section>
 
 
-    <!-- ===================================================
-         02 — WHO I AM
-         =================================================== -->
+    <!-- =======================================================
+         ABOUT
+    ======================================================== -->
 
     <section
+      class="page-section about-section"
       id="about"
-      class="section"
+      aria-labelledby="about-title"
     >
 
-      <div class="container">
+      <div class="section-container">
 
-        <div class="section-header reveal">
+        <div class="section-heading">
+
+          <span class="section-number">01</span>
 
           <div>
+            <p class="section-label">ABOUT</p>
 
-            <div class="section-number">
-              01 / WHO I AM
-            </div>
-
-            <h2 class="section-title">
-              More than a title.
+            <h2 id="about-title">
+              The person behind the work.
             </h2>
-
           </div>
-
-
-          <p class="section-description">
-            A journey shaped by leadership, entrepreneurship,
-            business building and digital innovation.
-          </p>
 
         </div>
 
 
-        <div class="intro-grid">
+        <div class="about-layout">
 
-          <div class="intro-label reveal">
-            The person behind the vision
+          <div class="about-image-wrap">
+
+            <img
+              src="tbd-group-founder.jpg"
+              alt="Aboobakkar Fahiz"
+              class="about-image"
+              loading="lazy"
+            >
+
           </div>
 
 
-          <div>
+          <div class="about-content">
 
-            <div class="intro-copy reveal">
-
-              I am <strong>Aboobakkar Fahiz</strong> —
-              a founder, entrepreneur, business builder
-              and digital innovator focused on turning
-              ideas into meaningful ventures.
-
-            </div>
-
-
-            <p class="intro-small reveal reveal-delay-1">
-
-              From student leadership and community
-              involvement to building businesses and
-              digital experiences, every chapter has been
-              about learning, creating and moving forward.
-
-              <br><br>
-
-              I believe the strongest ideas are the ones
-              that are built with purpose, discipline and
-              a willingness to start before everything is
-              perfect.
-
+            <p class="large-copy">
+              I am the founder, entrepreneur, business builder
+              and digital innovator focused on turning ideas
+              into meaningful ventures.
             </p>
 
+            <p>
+              My journey has moved through education, student
+              leadership, entrepreneurship and digital innovation.
+              Each experience has shaped the way I think,
+              build and move forward.
+            </p>
+
+            <p>
+              Today, I am building businesses and digital
+              experiences while continuing to learn, experiment
+              and prepare for what comes next.
+            </p>
+
+
+            <div class="about-details">
+
+              <div class="detail-item">
+                <span>Based in</span>
+                <strong>Mangaluru, Karnataka</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Focus</span>
+                <strong>Business · Digital · Innovation</strong>
+              </div>
+
+              <div class="detail-item">
+                <span>Current direction</span>
+                <strong>Building what comes next</strong>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
@@ -248,212 +247,29 @@
     </section>
 
 
-    <!-- ===================================================
-         03 — THREE LEADERSHIP & BUSINESS ROLES
-         =================================================== -->
+    <!-- =======================================================
+         JOURNEY
+    ======================================================== -->
 
     <section
-      id="leadership"
-      class="section"
-    >
-
-      <div class="container">
-
-        <div class="section-header reveal">
-
-          <div>
-
-            <div class="section-number">
-              02 / LEADERSHIP
-            </div>
-
-            <h2 class="section-title">
-              Three ways<br>
-              I build.
-            </h2>
-
-          </div>
-
-
-          <p class="section-description">
-
-            Leadership, entrepreneurship and digital
-            innovation are different expressions of the
-            same purpose — creating something that moves
-            people and possibilities forward.
-
-          </p>
-
-        </div>
-
-
-        <div class="role-grid">
-
-
-          <!-- ROLE 01 -->
-
-          <article class="role-card reveal">
-
-            <div class="role-number">
-              01 / FOUNDER
-            </div>
-
-            <div class="role-icon">
-              +
-            </div>
-
-
-            <div>
-
-              <h3>
-                Founder
-              </h3>
-
-              <p>
-
-                Building ventures from the ground up,
-                developing ideas into businesses and
-                creating platforms for future growth.
-
-              </p>
-
-            </div>
-
-
-            <div class="role-bottom">
-
-              <span class="role-status">
-                Build • Lead • Grow
-              </span>
-
-            </div>
-
-          </article>
-
-
-          <!-- ROLE 02 -->
-
-          <article class="role-card reveal reveal-delay-1">
-
-            <div class="role-number">
-              02 / ENTREPRENEUR
-            </div>
-
-            <div class="role-icon">
-              ↗
-            </div>
-
-
-            <div>
-
-              <h3>
-                Entrepreneur
-              </h3>
-
-              <p>
-
-                Exploring opportunities, connecting
-                people and businesses, and transforming
-                practical ideas into real-world ventures.
-
-              </p>
-
-            </div>
-
-
-            <div class="role-bottom">
-
-              <span class="role-status">
-                Ideas • Opportunities • Action
-              </span>
-
-            </div>
-
-          </article>
-
-
-          <!-- ROLE 03 -->
-
-          <article class="role-card reveal reveal-delay-2">
-
-            <div class="role-number">
-              03 / DIGITAL INNOVATOR
-            </div>
-
-            <div class="role-icon">
-              ◇
-            </div>
-
-
-            <div>
-
-              <h3>
-                Digital Innovator
-              </h3>
-
-              <p>
-
-                Creating websites, digital platforms,
-                business systems and interactive digital
-                experiences through Velora Digital.
-
-              </p>
-
-            </div>
-
-
-            <div class="role-bottom">
-
-              <span class="role-status">
-                Design • Develop • Innovate
-              </span>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         04 — MY JOURNEY
-         =================================================== -->
-
-    <section
+      class="page-section journey-section"
       id="journey"
-      class="section"
+      aria-labelledby="journey-title"
     >
 
-      <div class="container">
+      <div class="section-container">
 
-        <div class="section-header reveal">
+        <div class="section-heading">
+
+          <span class="section-number">02</span>
 
           <div>
+            <p class="section-label">MY JOURNEY</p>
 
-            <div class="section-number">
-              03 / MY JOURNEY
-            </div>
-
-            <h2 class="section-title">
-              Every chapter<br>
-              started with an idea.
+            <h2 id="journey-title">
+              Every chapter started with an idea.
             </h2>
-
           </div>
-
-
-          <p class="section-description">
-
-            A journey through education, student
-            leadership, entrepreneurship and digital
-            innovation.
-
-          </p>
 
         </div>
 
@@ -461,28 +277,20 @@
         <div class="timeline">
 
 
-          <!-- 2024 — EDUCATION -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
+            <div class="timeline-date">
               2024
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                The first chapter
-              </h3>
+              <h3>Mechanical Engineering</h3>
 
               <p>
-
-                Joined Mechanical Engineering at
-                PA College, Nadupadav. After experiencing
-                the course for about a year, I chose a
-                different direction and continued my
-                education through PUC.
-
+                Started Mechanical Engineering at PA College,
+                Nadupadav. After about a year, I decided to
+                leave the course and take a different direction.
               </p>
 
             </div>
@@ -490,26 +298,19 @@
           </article>
 
 
-          <!-- MARCH 2024 — NSUI -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              MAR 2024
+            <div class="timeline-date">
+              2024
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                Student leadership begins
-              </h3>
+              <h3>PUC</h3>
 
               <p>
-
-                Joined NSUI and began participating in
-                student activities, campaigns, protests
-                and community-focused initiatives.
-
+                Continued my education at Rosa Mystica PUC College,
+                Gurupura Kaikamba, completing first and second PUC.
               </p>
 
             </div>
@@ -517,27 +318,20 @@
           </article>
 
 
-          <!-- SEPTEMBER 2024 -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              SEP 2024
+            <div class="timeline-date">
+              Mar 2024
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                A leadership responsibility
-              </h3>
+              <h3>Student Leadership</h3>
 
               <p>
-
-                Joined the All College Students Association
-                (R), Dakshina Kannada District and was
-                nominated for Vice President on
-                6 September 2024.
-
+                Joined NSUI and became involved in student
+                activities, campaigns, protests and public
+                student issues.
               </p>
 
             </div>
@@ -545,26 +339,19 @@
           </article>
 
 
-          <!-- 28 SEPTEMBER -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              28 SEP 2024
+            <div class="timeline-date">
+              06 Sep 2024
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                Vice President
-              </h3>
+              <h3>ACSA Vice President Nomination</h3>
 
               <p>
-
-                Following the election counting, I became
-                Vice President of the All College Students
-                Association (R), Dakshina Kannada District.
-
+                Nominated for Vice President of All College
+                Students Association (R), Dakshina Kannada District.
               </p>
 
             </div>
@@ -572,54 +359,20 @@
           </article>
 
 
-          <!-- JANUARY 2025 -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              20 JAN 2025
+            <div class="timeline-date">
+              28 Sep 2024
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                TBD Group
-              </h3>
+              <h3>Vice President</h3>
 
               <p>
-
-                Founded TBD Group and began building a
-                business ecosystem across real estate,
-                interiors and construction-related
-                opportunities.
-
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- SEPTEMBER 2025 -->
-
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              19 SEP 2025
-            </div>
-
-            <div class="timeline-content">
-
-              <h3>
-                A chapter completed
-              </h3>
-
-              <p>
-
-                Completed my term as Vice President of the
+                Won the election and became Vice President of
                 All College Students Association (R),
                 Dakshina Kannada District.
-
               </p>
 
             </div>
@@ -627,26 +380,20 @@
           </article>
 
 
-          <!-- PUC -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              PUC
+            <div class="timeline-date">
+              20 Jan 2025
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                Continuing education
-              </h3>
+              <h3>TBD Group</h3>
 
               <p>
-
-                Continued my academic journey at
-                Rosa Mystica PUC College,
-                Gurupura Kaikamba.
-
+                Founded TBD Group and began building ventures
+                across real estate, interiors and construction
+                development.
               </p>
 
             </div>
@@ -654,26 +401,20 @@
           </article>
 
 
-          <!-- AUGUST 2026 -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              20 AUG 2026
+            <div class="timeline-date">
+              19 Sep 2025
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                AI & Data Science
-              </h3>
+              <h3>Former Vice President</h3>
 
               <p>
-
-                Started an AI & Data Science course,
-                adding a new technical direction to my
-                entrepreneurial and digital journey.
-
+                Completed the term as Vice President and
+                continued forward with entrepreneurship,
+                leadership and new projects.
               </p>
 
             </div>
@@ -681,27 +422,41 @@
           </article>
 
 
-          <!-- VELORA -->
+          <article class="timeline-item">
 
-          <article class="timeline-item reveal">
-
-            <div class="timeline-year">
-              23 AUG 2026
+            <div class="timeline-date">
+              20 Aug 2026
             </div>
 
             <div class="timeline-content">
 
-              <h3>
-                Velora Digital
-              </h3>
+              <h3>AI & Data Science</h3>
 
               <p>
+                Started an AI & Data Science course to strengthen
+                my technical knowledge and explore new possibilities
+                in technology.
+              </p>
 
+            </div>
+
+          </article>
+
+
+          <article class="timeline-item">
+
+            <div class="timeline-date">
+              23 Aug 2026
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>Velora Digital</h3>
+
+              <p>
                 Founded Velora Digital to create digital
-                experiences, websites, systems and
-                technology-driven solutions for businesses,
-                people and ideas.
-
+                experiences, websites and technology-driven
+                solutions for businesses, people and ideas.
               </p>
 
             </div>
@@ -716,1013 +471,951 @@
     </section>
 
 
-    <!-- ===================================================
-         05 — TBD GROUP
-         =================================================== -->
+    <!-- =======================================================
+         LEADERSHIP
+    ======================================================== -->
 
     <section
-      id="business"
-      class="section company-section"
+      class="page-section leadership-section"
+      id="leadership"
+      aria-labelledby="leadership-title"
     >
 
-      <div class="container">
+      <div class="section-container">
 
+        <div class="section-heading">
 
-        <div class="section-header reveal">
+          <span class="section-number">03</span>
 
           <div>
+            <p class="section-label">LEADERSHIP</p>
 
-            <div class="section-number">
-              04 / BUSINESS
-            </div>
-
-            <h2 class="section-title">
-              TBD GROUP
+            <h2 id="leadership-title">
+              A journey through student leadership.
             </h2>
-
           </div>
-
-
-          <p class="section-description">
-
-            Building opportunities across property,
-            interiors and construction.
-
-          </p>
 
         </div>
 
 
-        <div class="company-layout">
-
-
-          <div class="company-image-wrap reveal">
-
-            <img
-              src="tbd-group-founder.jpg"
-              alt="Aboobakkar Fahiz — Founder and Chairman of TBD Group"
-              class="company-image"
-              loading="lazy"
-            >
-
-          </div>
-
+        <div class="feature-intro">
 
           <div>
 
-            <div class="company-info-label reveal">
-              Founder & Chairman
-            </div>
+            <p class="large-copy">
+              Leadership taught me to listen, participate,
+              take responsibility and stand with people.
+            </p>
+
+          </div>
+
+          <div>
+
+            <p>
+              I joined NSUI in March 2024 and became involved
+              in student activities, campaigns and protests.
+              Later, I was nominated for Vice President of
+              All College Students Association (R), Dakshina
+              Kannada District.
+            </p>
+
+            <p>
+              On 28 September 2024, I won the election and
+              served as Vice President until 19 September 2025.
+              Today, I continue to carry those experiences
+              forward as a former student leader.
+            </p>
+
+          </div>
+
+        </div>
 
 
-            <h3 class="company-name reveal">
-              TBD<br>
-              GROUP
+        <!-- Leadership highlights -->
+
+        <div class="leadership-meta">
+
+          <div class="meta-block">
+            <span>Organization</span>
+            <strong>All College Students Association (R)</strong>
+          </div>
+
+          <div class="meta-block">
+            <span>Role</span>
+            <strong>Former Vice President</strong>
+          </div>
+
+          <div class="meta-block">
+            <span>District</span>
+            <strong>Dakshina Kannada</strong>
+          </div>
+
+        </div>
+
+
+        <!-- Leadership Gallery -->
+
+        <div class="gallery-header">
+
+          <div>
+            <p class="section-label">LEADERSHIP GALLERY</p>
+
+            <h3>
+              Moments from the journey.
             </h3>
-
-
-            <div class="company-role reveal">
-              Founder & Chairman
-            </div>
-
-
-            <p class="company-description reveal">
-
-              Founded on 20 January 2025, TBD Group
-              represents an entrepreneurial vision focused
-              on creating and connecting opportunities
-              across multiple business areas.
-
-              <br><br>
-
-              The group brings together real estate,
-              interiors and construction-related
-              opportunities under one growing business
-              ecosystem.
-
-            </p>
-
-
-            <div class="company-date reveal">
-              Founded — 20 January 2025
-            </div>
-
           </div>
 
         </div>
 
 
-        <!-- TBD BUSINESSES -->
-
-        <div class="business-grid">
-
-
-          <!-- SR PRIME -->
-
-          <article class="business-card reveal">
-
-            <div class="business-card-number">
-              01 / REAL ESTATE
-            </div>
-
-            <h4>
-              SR | PRIME
-            </h4>
-
-            <p>
-              Properties & Real Estate Developers.
-              Residential, commercial, land and
-              property-related opportunities.
-            </p>
-
-            <span class="business-stat">
-              Approximately 10 properties dealt
-            </span>
-
-          </article>
-
-
-          <!-- AURELIV -->
-
-          <article class="business-card reveal reveal-delay-1">
-
-            <div class="business-card-number">
-              02 / INTERIORS
-            </div>
-
-            <h4>
-              AURELIV
-              <br>
-              INTERIORS DESIGN
-            </h4>
-
-            <p>
-              A-Z residential and commercial interior
-              design solutions.
-            </p>
-
-            <span class="business-stat">
-              3 projects completed
-            </span>
-
-          </article>
-
-
-          <!-- BUILDERS -->
-
-          <article class="business-card reveal reveal-delay-2">
-
-            <div class="business-card-number">
-              03 / CONSTRUCTION
-            </div>
-
-            <h4>
-              TBD BUILDERS
-              <br>
-              & DEVELOPERS
-            </h4>
-
-            <p>
-              Construction and development opportunities
-              across residential and commercial projects.
-            </p>
-
-            <span class="business-stat">
-              15 project inquiries connected
-            </span>
-
-          </article>
-
-
-        </div>
-
-
-        <div
-          class="reveal"
-          style="
-            margin-top: 35px;
-            max-width: 760px;
-            color: #a7a29a;
-            font-size: 0.82rem;
-            line-height: 1.8;
-          "
-        >
-
-          Construction note: received construction project
-          inquiries and connected suitable projects with
-          experienced partner companies for execution.
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         06 — VELORA DIGITAL
-         =================================================== -->
-
-    <section
-      id="velora"
-      class="section velora-section"
-    >
-
-      <div class="container">
-
-
-        <div class="company-layout reverse">
-
-
-          <div class="company-image-wrap reveal">
-
-            <img
-              src="velora-digital-founder.jpg"
-              alt="Aboobakkar Fahiz — Founder and CEO of Velora Digital"
-              class="company-image"
-              loading="lazy"
-            >
-
-          </div>
-
-
-          <div>
-
-            <div class="company-info-label reveal">
-              Founder & CEO
-            </div>
-
-
-            <h2 class="company-name reveal">
-              VELORA<br>
-              DIGITAL
-            </h2>
-
-
-            <div class="company-role reveal">
-              Digital experiences built for businesses,
-              people & ideas.
-            </div>
-
-
-            <p class="company-description reveal">
-
-              Started on 23 August 2026, Velora Digital
-              focuses on creating modern digital experiences
-              for businesses, entrepreneurs and people with
-              ideas worth building.
-
-              <br><br>
-
-              From business websites and personal platforms
-              to digital systems, e-commerce experiences,
-              educational platforms and interactive
-              experiences — the goal is simple:
-
-              <br><br>
-
-              <strong class="gold">
-                Turn ideas into digital experiences.
-              </strong>
-
-            </p>
-
-
-            <div class="company-date reveal">
-              Started — 23 August 2026
-            </div>
-
-
-            <br>
-
-
-            <a
-              href="https://veloradigital.co.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="velora-link reveal"
-            >
-              Visit Velora Digital
-              <span>↗</span>
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- VELORA SERVICES -->
-
-        <div class="service-grid">
-
-
-          <article class="service-card reveal">
-
-            <div class="service-number">
-              01
-            </div>
-
-            <h4>
-              Web Experiences
-            </h4>
-
-            <p>
-              Business websites, personal websites
-              and landing pages.
-            </p>
-
-          </article>
-
-
-          <article class="service-card reveal reveal-delay-1">
-
-            <div class="service-number">
-              02
-            </div>
-
-            <h4>
-              Business Systems
-            </h4>
-
-            <p>
-              Billing, registration, appointment and
-              requirement systems.
-            </p>
-
-          </article>
-
-
-          <article class="service-card reveal reveal-delay-2">
-
-            <div class="service-number">
-              03
-            </div>
-
-            <h4>
-              E-Commerce
-            </h4>
-
-            <p>
-              Online stores, product experiences and
-              business tools.
-            </p>
-
-          </article>
-
-
-          <article class="service-card reveal reveal-delay-1">
-
-            <div class="service-number">
-              04
-            </div>
-
-            <h4>
-              Digital Platforms
-            </h4>
-
-            <p>
-              Education, community, AI and utility
-              platforms.
-            </p>
-
-          </article>
-
-
-          <article class="service-card reveal reveal-delay-2">
-
-            <div class="service-number">
-              05
-            </div>
-
-            <h4>
-              Creative Experiences
-            </h4>
-
-            <p>
-              Invitations, events and interactive
-              digital experiences.
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         07 — SELECTED DIGITAL WORK
-         =================================================== -->
-
-    <section
-      id="work"
-      class="section"
-    >
-
-      <div class="container">
-
-
-        <div class="section-header reveal">
-
-          <div>
-
-            <div class="section-number">
-              05 / SELECTED DIGITAL WORK
-            </div>
-
-            <h2 class="section-title">
-              Ideas turned<br>
-              into digital.
-            </h2>
-
-          </div>
-
-
-          <p class="section-description">
-
-            A selection of digital projects, concepts and
-            platforms created across business, community,
-            education and creative experiences.
-
-          </p>
-
-        </div>
-
-
-        <div class="work-grid">
-
-
-          <!-- VELORA HELP -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/velora-help"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal"
-          >
-
-            <div class="work-type">
-              Digital Platform
-            </div>
-
-            <div>
-
-              <h3>
-                Velora Help
-              </h3>
-
-              <p>
-                A community-focused digital platform
-                designed around local help and services.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- MY MANGALURU -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/my-mangaluru"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-1"
-          >
-
-            <div class="work-type">
-              Local Digital Platform
-            </div>
-
-            <div>
-
-              <h3>
-                My Mangaluru
-              </h3>
-
-              <p>
-                A digital concept focused on connecting
-                people with local information and services.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- AI BUSINESS BRAIN -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/ai-business-brain"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-2"
-          >
-
-            <div class="work-type">
-              AI / Business
-            </div>
-
-            <div>
-
-              <h3>
-                AI Business Brain
-              </h3>
-
-              <p>
-                A digital concept exploring AI-assisted
-                business thinking and tools.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- REQUIREMENT FORM -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/velora-digital-requirement-form"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal"
-          >
-
-            <div class="work-type">
-              Business System
-            </div>
-
-            <div>
-
-              <h3>
-                Digital Requirement Form
-              </h3>
-
-              <p>
-                A structured digital requirement experience
-                for collecting project information.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- FOOTBALL REGISTRATION -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/velora-football-registration"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-1"
-          >
-
-            <div class="work-type">
-              Registration Platform
-            </div>
-
-            <div>
-
-              <h3>
-                Football Registration
-              </h3>
-
-              <p>
-                A digital registration concept for football
-                player and event management.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- THE JEWELS -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/the-jewels"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-2"
-          >
-
-            <div class="work-type">
-              E-Commerce
-            </div>
-
-            <div>
-
-              <h3>
-                The Jewels
-              </h3>
-
-              <p>
-                A digital jewellery business experience
-                exploring commerce and product presentation.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- INVITATION -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/FATHIMA-HAIFA-MEHNDI-INVITATION"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal"
-          >
-
-            <div class="work-type">
-              Creative Digital
-            </div>
-
-            <div>
-
-              <h3>
-                Mehendi Invitation
-              </h3>
-
-              <p>
-                An interactive digital invitation experience
-                created for a special celebration.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- PERSONAL WEBSITE -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/aboobakkar-fahiz"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-1"
-          >
-
-            <div class="work-type">
-              Personal Platform
-            </div>
-
-            <div>
-
-              <h3>
-                Aboobakkar Fahiz
-              </h3>
-
-              <p>
-                This portfolio — a digital representation
-                of the journey, businesses, vision and work.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-          <!-- TBD WEBSITE -->
-
-          <a
-            href="https://github.com/aboobakkerfahiz57-design/tbd-group-website"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="work-card reveal reveal-delay-2"
-          >
-
-            <div class="work-type">
-              Business Website
-            </div>
-
-            <div>
-
-              <h3>
-                TBD Group
-              </h3>
-
-              <p>
-                A digital business presence for the
-                TBD Group ecosystem.
-              </p>
-
-            </div>
-
-            <div class="work-arrow">
-              ↗
-            </div>
-
-          </a>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         08 — LEADERSHIP GALLERY
-         =================================================== -->
-
-    <section
-      id="gallery"
-      class="section"
-    >
-
-      <div class="container">
-
-
-        <div class="section-header reveal">
-
-          <div>
-
-            <div class="section-number">
-              06 / LEADERSHIP GALLERY
-            </div>
-
-            <h2 class="section-title">
-              Moments<br>
-              that shaped me.
-            </h2>
-
-          </div>
-
-
-          <p class="section-description">
-
-            One collection of moments from leadership,
-            activities, campaigns, events and the journey
-            along the way.
-
-          </p>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
+        <div class="leadership-gallery" id="leadership-gallery">
 
           <button
-            class="gallery-item reveal"
+            class="gallery-item"
             type="button"
+            data-image="leadership-01.jpg"
+            data-index="0"
+            aria-label="Open leadership photograph 1"
           >
-
             <img
               src="leadership-01.jpg"
-              alt="Leadership moment 01"
+              alt="Leadership moment 1"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-1"
+            class="gallery-item"
             type="button"
+            data-image="leadership-02.jpg"
+            data-index="1"
+            aria-label="Open leadership photograph 2"
           >
-
             <img
               src="leadership-02.jpg"
-              alt="Leadership moment 02"
+              alt="Leadership moment 2"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-2"
+            class="gallery-item"
             type="button"
+            data-image="leadership-03.jpg"
+            data-index="2"
+            aria-label="Open leadership photograph 3"
           >
-
             <img
               src="leadership-03.jpg"
-              alt="Leadership moment 03"
+              alt="Leadership moment 3"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-3"
+            class="gallery-item"
             type="button"
+            data-image="leadership-04.jpg"
+            data-index="3"
+            aria-label="Open leadership photograph 4"
           >
-
             <img
               src="leadership-04.jpg"
-              alt="Leadership moment 04"
+              alt="Leadership moment 4"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal"
+            class="gallery-item"
             type="button"
+            data-image="leadership-05.jpg"
+            data-index="4"
+            aria-label="Open leadership photograph 5"
           >
-
             <img
               src="leadership-05.jpg"
-              alt="Leadership moment 05"
+              alt="Leadership moment 5"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-1"
+            class="gallery-item"
             type="button"
+            data-image="leadership-06.jpg"
+            data-index="5"
+            aria-label="Open leadership photograph 6"
           >
-
             <img
               src="leadership-06.jpg"
-              alt="Leadership moment 06"
+              alt="Leadership moment 6"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-2"
+            class="gallery-item"
             type="button"
+            data-image="leadership-07.jpg"
+            data-index="6"
+            aria-label="Open leadership photograph 7"
           >
-
             <img
               src="leadership-07.jpg"
-              alt="Leadership moment 07"
+              alt="Leadership moment 7"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-3"
+            class="gallery-item"
             type="button"
+            data-image="leadership-08.jpg"
+            data-index="7"
+            aria-label="Open leadership photograph 8"
           >
-
             <img
               src="leadership-08.jpg"
-              alt="Leadership moment 08"
+              alt="Leadership moment 8"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal"
+            class="gallery-item"
             type="button"
+            data-image="leadership-09.jpg"
+            data-index="8"
+            aria-label="Open leadership photograph 9"
           >
-
             <img
               src="leadership-09.jpg"
-              alt="Leadership moment 09"
+              alt="Leadership moment 9"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-1"
+            class="gallery-item"
             type="button"
+            data-image="leadership-10.jpg"
+            data-index="9"
+            aria-label="Open leadership photograph 10"
           >
-
             <img
               src="leadership-10.jpg"
               alt="Leadership moment 10"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-2"
+            class="gallery-item"
             type="button"
+            data-image="leadership-11.jpg"
+            data-index="10"
+            aria-label="Open leadership photograph 11"
           >
-
             <img
               src="leadership-11.jpg"
               alt="Leadership moment 11"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-3"
+            class="gallery-item"
             type="button"
+            data-image="leadership-12.jpg"
+            data-index="11"
+            aria-label="Open leadership photograph 12"
           >
-
             <img
               src="leadership-12.jpg"
               alt="Leadership moment 12"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal"
+            class="gallery-item"
             type="button"
+            data-image="leadership-13.jpg"
+            data-index="12"
+            aria-label="Open leadership photograph 13"
           >
-
             <img
               src="leadership-13.jpg"
               alt="Leadership moment 13"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-1"
+            class="gallery-item"
             type="button"
+            data-image="leadership-14.jpg"
+            data-index="13"
+            aria-label="Open leadership photograph 14"
           >
-
             <img
               src="leadership-14.jpg"
               alt="Leadership moment 14"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-2"
+            class="gallery-item"
             type="button"
+            data-image="leadership-15.jpg"
+            data-index="14"
+            aria-label="Open leadership photograph 15"
           >
-
             <img
               src="leadership-15.jpg"
               alt="Leadership moment 15"
               loading="lazy"
             >
-
           </button>
 
 
           <button
-            class="gallery-item reveal reveal-delay-3"
+            class="gallery-item"
             type="button"
+            data-image="leadership-16.jpg"
+            data-index="15"
+            aria-label="Open leadership photograph 16"
           >
-
             <img
               src="leadership-16.jpg"
               alt="Leadership moment 16"
               loading="lazy"
             >
-
           </button>
+
+        </div>
+
+
+        <div class="section-contact-line">
+
+          <a
+            href="https://wa.me/916360695474"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            href="https://www.instagram.com/fahiz._.nsui/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         TBD GROUP
+    ======================================================== -->
+
+    <section
+      class="page-section company-section"
+      id="tbd"
+      aria-labelledby="tbd-title"
+    >
+
+      <div class="section-container">
+
+        <div class="section-heading">
+
+          <span class="section-number">04</span>
+
+          <div>
+            <p class="section-label">TBD GROUP</p>
+
+            <h2 id="tbd-title">
+              Building ventures with a long-term view.
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="company-hero">
+
+          <div class="company-founder-image">
+
+            <img
+              src="tbd-group-founder.jpg"
+              alt="Aboobakkar Fahiz, Founder and Chairman of TBD Group"
+              loading="lazy"
+            >
+
+          </div>
+
+
+          <div class="company-intro">
+
+            <p class="company-role">
+              FOUNDER & CHAIRMAN
+            </p>
+
+            <h3>
+              TBD Group
+            </h3>
+
+            <p class="large-copy">
+              A business group built around real estate,
+              interiors and construction development.
+            </p>
+
+            <p>
+              Founded on 20 January 2025, TBD Group represents
+              my first major step into building and developing
+              business ventures.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- TBD businesses -->
+
+        <div class="business-list">
+
+
+          <article class="business-item">
+
+            <div class="business-number">
+              01
+            </div>
+
+            <div class="business-content">
+
+              <h3>
+                SR | PRIME
+              </h3>
+
+              <p class="business-category">
+                Properties & Real Estate Developers
+              </p>
+
+              <p>
+                Residential and commercial properties,
+                land and plots, buying, selling, rental,
+                sourcing and property-related services.
+              </p>
+
+              <div class="business-stat">
+                <span>Property activity</span>
+                <strong>10+ properties dealt</strong>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="business-item">
+
+            <div class="business-number">
+              02
+            </div>
+
+            <div class="business-content">
+
+              <h3>
+                AURELIV INTERIORS DESIGN
+              </h3>
+
+              <p class="business-category">
+                Residential & Commercial Interior Design
+              </p>
+
+              <p>
+                A-Z interior design solutions for residential
+                and commercial spaces, from concept to execution.
+              </p>
+
+              <div class="business-stat">
+                <span>Completed</span>
+                <strong>3 projects</strong>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="business-item">
+
+            <div class="business-number">
+              03
+            </div>
+
+            <div class="business-content">
+
+              <h3>
+                TBD BUILDERS & DEVELOPERS
+              </h3>
+
+              <p class="business-category">
+                Construction & Development
+              </p>
+
+              <p>
+                A-Z construction and development opportunities
+                across residential and commercial projects.
+              </p>
+
+              <p>
+                Received 15 construction project inquiries and
+                connected suitable projects with experienced
+                partner companies for execution.
+              </p>
+
+              <div class="business-stat">
+                <span>Project inquiries</span>
+                <strong>15</strong>
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+        <div class="company-contact">
+
+          <p>
+            Connect with TBD Group
+          </p>
+
+          <div class="contact-links">
+
+            <a href="tel:+916360695474">
+              Call
+            </a>
+
+            <a
+              href="https://wa.me/916360695474"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+
+            <a href="mailto:tbdgroup.in@gmail.com">
+              Email
+            </a>
+
+            <a
+              href="https://www.instagram.com/tbdgroup.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         VELORA DIGITAL
+    ======================================================== -->
+
+    <section
+      class="page-section company-section velora-section"
+      id="velora"
+      aria-labelledby="velora-title"
+    >
+
+      <div class="section-container">
+
+        <div class="section-heading">
+
+          <span class="section-number">05</span>
+
+          <div>
+            <p class="section-label">VELORA DIGITAL</p>
+
+            <h2 id="velora-title">
+              Digital experiences built for businesses,
+              people & ideas.
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="company-hero velora-hero">
+
+          <div class="company-founder-image">
+
+            <img
+              src="velora-digital-founder.jpg"
+              alt="Aboobakkar Fahiz, Founder and CEO of Velora Digital"
+              loading="lazy"
+            >
+
+          </div>
+
+
+          <div class="company-intro">
+
+            <p class="company-role">
+              FOUNDER & CEO
+            </p>
+
+            <h3>
+              Velora Digital
+            </h3>
+
+            <p class="large-copy">
+              Building websites, digital platforms and
+              technology-driven experiences.
+            </p>
+
+            <p>
+              Started on 23 August 2026, Velora Digital focuses
+              on creating digital experiences for businesses,
+              people and ideas.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Services -->
+
+        <div class="service-list">
+
+
+          <article class="service-item">
+
+            <span>01</span>
+
+            <div>
+              <h3>Web Experiences</h3>
+
+              <p>
+                Business websites, personal websites,
+                landing pages and digital portfolios.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="service-item">
+
+            <span>02</span>
+
+            <div>
+              <h3>Business Systems</h3>
+
+              <p>
+                Billing, registration, appointment,
+                requirement and workflow systems.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="service-item">
+
+            <span>03</span>
+
+            <div>
+              <h3>E-commerce</h3>
+
+              <p>
+                Online stores, product experiences and
+                digital business tools.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="service-item">
+
+            <span>04</span>
+
+            <div>
+              <h3>Digital Platforms</h3>
+
+              <p>
+                Education, community, AI and utility-focused
+                digital platforms.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="service-item">
+
+            <span>05</span>
+
+            <div>
+              <h3>Creative Digital Experiences</h3>
+
+              <p>
+                Interactive invitations, events and
+                custom digital experiences.
+              </p>
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+        <div class="company-contact">
+
+          <p>
+            Connect with Velora Digital
+          </p>
+
+          <div class="contact-links">
+
+            <a href="tel:+918088590273">
+              Call
+            </a>
+
+            <a
+              href="https://wa.me/918088590273"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+
+            <a href="mailto:veloradigitalco.in@gmail.com">
+              Email
+            </a>
+
+            <a
+              href="https://www.instagram.com/veloradigital.co.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="https://veloradigital.co.in"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Website
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         SELECTED DIGITAL WORK
+    ======================================================== -->
+
+    <section
+      class="page-section work-section"
+      id="work"
+      aria-labelledby="work-title"
+    >
+
+      <div class="section-container">
+
+        <div class="section-heading">
+
+          <span class="section-number">06</span>
+
+          <div>
+            <p class="section-label">SELECTED DIGITAL WORK</p>
+
+            <h2 id="work-title">
+              A selection of things I have built.
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="work-list">
+
+
+          <article class="work-item">
+
+            <div class="work-index">01</div>
+
+            <div class="work-main">
+
+              <h3>Velora Help</h3>
+
+              <p>
+                A digital platform created around community
+                assistance and local support.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              Digital Platform
+            </div>
+
+          </article>
+
+
+          <article class="work-item">
+
+            <div class="work-index">02</div>
+
+            <div class="work-main">
+
+              <h3>My Mangaluru</h3>
+
+              <p>
+                A local digital concept focused on connecting
+                people with useful information and services.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              Local Platform
+            </div>
+
+          </article>
+
+
+          <article class="work-item">
+
+            <div class="work-index">03</div>
+
+            <div class="work-main">
+
+              <h3>The Jewels</h3>
+
+              <p>
+                An e-commerce experience designed around
+                products and digital shopping.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              E-commerce
+            </div>
+
+          </article>
+
+
+          <article class="work-item">
+
+            <div class="work-index">04</div>
+
+            <div class="work-main">
+
+              <h3>AI Business Brain</h3>
+
+              <p>
+                An AI-focused business concept exploring
+                digital intelligence and decision support.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              AI
+            </div>
+
+          </article>
+
+
+          <article class="work-item">
+
+            <div class="work-index">05</div>
+
+            <div class="work-main">
+
+              <h3>Velora Requirement Form</h3>
+
+              <p>
+                A structured digital system for collecting
+                business and project requirements.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              Business System
+            </div>
+
+          </article>
+
+
+          <article class="work-item">
+
+            <div class="work-index">06</div>
+
+            <div class="work-main">
+
+              <h3>Digital Invitation Experiences</h3>
+
+              <p>
+                Interactive web-based invitation experiences
+                created for celebrations and events.
+              </p>
+
+            </div>
+
+            <div class="work-type">
+              Creative Digital
+            </div>
+
+          </article>
 
 
         </div>
@@ -1732,96 +1425,33 @@
     </section>
 
 
-    <!-- ===================================================
-         LIGHTBOX
-         =================================================== -->
-
-    <div
-      class="lightbox"
-      aria-hidden="true"
-      role="dialog"
-      aria-label="Leadership gallery viewer"
-    >
-
-      <button
-        class="lightbox-close"
-        type="button"
-        aria-label="Close gallery"
-      >
-        ×
-      </button>
-
-
-      <button
-        class="lightbox-prev"
-        type="button"
-        aria-label="Previous image"
-      >
-        ←
-      </button>
-
-
-      <img
-        class="lightbox-image"
-        src=""
-        alt=""
-      >
-
-
-      <button
-        class="lightbox-next"
-        type="button"
-        aria-label="Next image"
-      >
-        →
-      </button>
-
-
-      <div class="lightbox-counter">
-        1 / 16
-      </div>
-
-    </div>
-
-
-    <!-- ===================================================
-         09 — MY VISION
-         =================================================== -->
+    <!-- =======================================================
+         VISION
+    ======================================================== -->
 
     <section
+      class="page-section vision-section"
       id="vision"
-      class="section vision"
+      aria-labelledby="vision-title"
     >
 
-      <div class="container">
+      <div class="section-container">
 
         <div class="vision-content">
 
-          <div class="vision-small reveal">
-            07 / MY VISION
-          </div>
+          <p class="section-label">
+            MY VISION
+          </p>
 
-
-          <h2 class="vision-title reveal">
-
-            Think beyond
-            <span>today.</span>
-
-            <br>
-
-            Build for
-            <span>tomorrow.</span>
-
+          <h2 id="vision-title">
+            Think beyond today.
+            Build for tomorrow.
           </h2>
 
-
-          <p class="vision-copy reveal reveal-delay-1">
-
-            I want to build businesses, digital platforms
-            and ideas that create real value — while
-            continuously learning, adapting and preparing
-            for what comes next.
-
+          <p>
+            I want to build businesses, digital platforms and
+            ideas that create real value while also earning
+            and preparing for what comes next.
           </p>
 
         </div>
@@ -1831,182 +1461,95 @@
     </section>
 
 
-    <!-- ===================================================
-         10 — THE NEXT CHAPTER
-         =================================================== -->
+    <!-- =======================================================
+         NEXT CHAPTER
+    ======================================================== -->
 
     <section
+      class="next-section"
       id="next"
-      class="next-chapter section"
+      aria-labelledby="next-title"
     >
 
-      <div class="container">
+      <div class="next-content">
 
-        <div class="next-content">
+        <p class="section-label">
+          THE NEXT CHAPTER
+        </p>
 
+        <h2 id="next-title">
+          The journey is just beginning.
+        </h2>
 
-          <div class="next-label reveal">
-            08 / THE NEXT CHAPTER
-          </div>
-
-
-          <h2 class="next-title reveal">
-
-            The journey
-            is just
-            beginning.
-
-          </h2>
-
-
-          <p class="next-copy reveal reveal-delay-1">
-
-            There is still more to learn, more to build
-            and more to explore.
-
-            <br><br>
-
-            The next chapter is about combining
-            entrepreneurship, leadership, technology and
-            digital innovation into something bigger.
-
-          </p>
-
-        </div>
+        <a href="#contact" class="button button-light">
+          Let's connect
+        </a>
 
       </div>
 
     </section>
 
 
-    <!-- ===================================================
-         11 — CONTACT
-         =================================================== -->
+    <!-- =======================================================
+         CONTACT
+    ======================================================== -->
 
     <section
+      class="page-section contact-section"
       id="contact"
-      class="section contact-section"
+      aria-labelledby="contact-title"
     >
 
-      <div class="container">
+      <div class="section-container">
 
-
-        <div class="section-header reveal">
-
-          <div>
-
-            <div class="section-number">
-              09 / CONTACT
-            </div>
-
-            <h2 class="section-title">
-              Let's build<br>
-              what's next.
-            </h2>
-
-          </div>
-
-
-          <p class="section-description">
-
-            For business opportunities, collaborations,
-            digital projects, partnerships or simply to
-            connect — reach out directly.
-
-          </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-          <!-- PERSONAL CONTACT -->
+        <div class="contact-layout">
 
           <div>
 
-            <h3 class="contact-title reveal">
-              START<br>
-              A CONVERSATION.
-            </h3>
-
-
-            <p class="contact-copy reveal reveal-delay-1">
-
-              Whether you have an idea, an opportunity,
-              a business requirement or a project to build,
-              I am always open to meaningful conversations.
-
+            <p class="section-label">
+              CONTACT
             </p>
 
+            <h2 id="contact-title">
+              Let’s connect.
+            </h2>
 
-            <div class="contact-actions reveal reveal-delay-2">
-
-
-              <a
-                href="https://wa.me/916360695474?text=Hello%20Aboobakkar%2C%20I%20visited%20your%20website%20and%20would%20like%20to%20connect."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary"
-              >
-                WhatsApp
-              </a>
-
-
-              <a
-                href="tel:+916360695474"
-                class="button"
-              >
-                Call
-              </a>
-
-
-              <a
-                href="mailto:aboobakkerfahiz6@gmail.com"
-                class="button"
-              >
-                Email
-              </a>
-
-            </div>
+            <p class="contact-description">
+              For business, digital projects, collaborations
+              or opportunities, feel free to reach out.
+            </p>
 
           </div>
 
 
-          <!-- CONTACT DETAILS -->
+          <div class="contact-options">
 
-          <div class="contact-list">
+            <a
+              href="https://wa.me/916360695474"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-option"
+            >
+              <span>WhatsApp</span>
+              <strong>+91 63606 95474</strong>
+            </a>
 
 
             <a
               href="tel:+916360695474"
-              class="contact-item reveal"
+              class="contact-option"
             >
-
-              <span class="contact-label">
-                Phone
-              </span>
-
-              <span class="contact-value">
-                +91 6360695474
-              </span>
-
+              <span>Call</span>
+              <strong>+91 63606 95474</strong>
             </a>
 
 
             <a
               href="mailto:aboobakkerfahiz6@gmail.com"
-              class="contact-item reveal reveal-delay-1"
+              class="contact-option"
             >
-
-              <span class="contact-label">
-                Personal Email
-              </span>
-
-              <span class="contact-value">
-                aboobakkerfahiz6@gmail.com
-              </span>
-
+              <span>Email</span>
+              <strong>aboobakkerfahiz6@gmail.com</strong>
             </a>
 
 
@@ -2014,139 +1557,11 @@
               href="https://www.instagram.com/fahiz.official/"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-item reveal reveal-delay-2"
+              class="contact-option"
             >
-
-              <span class="contact-label">
-                Instagram
-              </span>
-
-              <span class="contact-value">
-                @fahiz.official
-              </span>
-
+              <span>Instagram</span>
+              <strong>@fahiz.official</strong>
             </a>
-
-
-            <a
-              href="https://www.instagram.com/fahiz._.nsui/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-item reveal reveal-delay-3"
-            >
-
-              <span class="contact-label">
-                Leadership Instagram
-              </span>
-
-              <span class="contact-value">
-                @fahiz._.nsui
-              </span>
-
-            </a>
-
-
-            <a
-              href="mailto:tbdgroup.in@gmail.com"
-              class="contact-item reveal"
-            >
-
-              <span class="contact-label">
-                TBD Group
-              </span>
-
-              <span class="contact-value">
-                tbdgroup.in@gmail.com
-              </span>
-
-            </a>
-
-
-            <a
-              href="mailto:veloradigitalco.in@gmail.com"
-              class="contact-item reveal reveal-delay-1"
-            >
-
-              <span class="contact-label">
-                Velora Digital
-              </span>
-
-              <span class="contact-value">
-                veloradigitalco.in@gmail.com
-              </span>
-
-            </a>
-
-
-            <a
-              href="tel:+918088590273"
-              class="contact-item reveal reveal-delay-2"
-            >
-
-              <span class="contact-label">
-                Velora Digital Phone
-              </span>
-
-              <span class="contact-value">
-                +91 80885 90273
-              </span>
-
-            </a>
-
-
-            <a
-              href="https://veloradigital.co.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-item reveal reveal-delay-3"
-            >
-
-              <span class="contact-label">
-                Velora Digital
-              </span>
-
-              <span class="contact-value">
-                veloradigital.co.in ↗
-              </span>
-
-            </a>
-
-
-            <a
-              href="https://www.instagram.com/tbdgroup.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-item reveal"
-            >
-
-              <span class="contact-label">
-                TBD Group Instagram
-              </span>
-
-              <span class="contact-value">
-                @tbdgroup.in
-              </span>
-
-            </a>
-
-
-            <a
-              href="https://www.instagram.com/veloradigital.co.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contact-item reveal reveal-delay-1"
-            >
-
-              <span class="contact-label">
-                Velora Instagram
-              </span>
-
-              <span class="contact-value">
-                @veloradigital.co.in
-              </span>
-
-            </a>
-
 
           </div>
 
@@ -2160,28 +1575,105 @@
   </main>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
+       GALLERY LIGHTBOX
+  ========================================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Leadership photograph viewer"
+  >
+
+    <button
+      class="lightbox-close"
+      id="lightbox-close"
+      type="button"
+      aria-label="Close image viewer"
+    >
+      ×
+    </button>
+
+
+    <button
+      class="lightbox-prev"
+      id="lightbox-prev"
+      type="button"
+      aria-label="Previous photograph"
+    >
+      ←
+    </button>
+
+
+    <div class="lightbox-image-wrap">
+
+      <img
+        id="lightbox-image"
+        src=""
+        alt="Leadership photograph"
+      >
+
+      <div
+        class="lightbox-counter"
+        id="lightbox-counter"
+      >
+        01 / 16
+      </div>
+
+    </div>
+
+
+    <button
+      class="lightbox-next"
+      id="lightbox-next"
+      type="button"
+      aria-label="Next photograph"
+    >
+      →
+    </button>
+
+  </div>
+
+
+  <!-- =========================================================
        FOOTER
-       ===================================================== -->
+  ========================================================== -->
 
-  <footer class="footer">
+  <footer class="site-footer">
 
-    <div class="container">
+    <div class="footer-inner">
 
-      <div class="footer-inner">
+      <div class="footer-brand">
 
-        <div class="footer-brand">
+        <span class="footer-name">
+          ABOOBAKKAR FAHIZ
+        </span>
+
+        <span>
+          Founder · Entrepreneur · Digital Innovator
+        </span>
+
+      </div>
+
+
+      <div class="footer-location">
+        Dakshina Kannada · Mangaluru · India
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="current-year"></span>
           Aboobakkar Fahiz
-        </div>
+        </span>
 
-
-        <div class="footer-copy">
-
-          © <span data-current-year>2026</span>
-          Aboobakkar Fahiz.
-          All rights reserved.
-
-        </div>
+        <a href="#home">
+          Back to top ↑
+        </a>
 
       </div>
 
@@ -2190,9 +1682,9 @@
   </footer>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        JAVASCRIPT
-       ===================================================== -->
+  ========================================================== -->
 
   <script src="script.js" defer></script>
 
